@@ -73,4 +73,14 @@ a {
   background-color: #e0393d;
 }
 
+.map-holder {
+  margin-bottom: 5em;
+}
+.map-holder #map {
+  width: 90%;
+  margin: 0 5%;
+  height: 400px;
+  border: 1px solid #4285F4;
+}
+
 /*# sourceMappingURL=styles.css.map */
