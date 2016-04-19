@@ -1,0 +1,40 @@
+.meetup-results{
+	padding: 0 1em;
+	margin-bottom: 15em;
+
+	.meetup-template{
+		width: 100%;
+		padding: 1em 0;
+		color: #fff;
+		background-color: darken($red, 30);
+
+		a, a:visited{
+			color: lighten($red, 30);
+		}
+
+		a:hover{
+			font-style: italic;
+		}
+
+		.title, .members{
+			padding: 0 1em;
+		}
+
+		.title{
+			width: 50%;
+			float: left;
+		}
+
+		.organizer{
+			margin-top: 25px;
+		}
+
+		.about{
+			margin: 25px 2.5% 0;
+			height: 200px;
+			padding: 1em;
+			overflow: scroll;
+			overflow-x: hidden;
+		}
+	}
+}

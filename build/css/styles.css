@@ -83,4 +83,38 @@ a {
   border: 1px solid #4285F4;
 }
 
+.meetup-results {
+  padding: 0 1em;
+  margin-bottom: 15em;
+}
+.meetup-results .meetup-template {
+  width: 100%;
+  padding: 1em 0;
+  color: #fff;
+  background-color: #6f1114;
+}
+.meetup-results .meetup-template a, .meetup-results .meetup-template a:visited {
+  color: #f5bdbf;
+}
+.meetup-results .meetup-template a:hover {
+  font-style: italic;
+}
+.meetup-results .meetup-template .title, .meetup-results .meetup-template .members {
+  padding: 0 1em;
+}
+.meetup-results .meetup-template .title {
+  width: 50%;
+  float: left;
+}
+.meetup-results .meetup-template .organizer {
+  margin-top: 25px;
+}
+.meetup-results .meetup-template .about {
+  margin: 25px 2.5% 0;
+  height: 200px;
+  padding: 1em;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
 /*# sourceMappingURL=styles.css.map */
