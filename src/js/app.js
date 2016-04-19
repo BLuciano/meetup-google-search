@@ -1,5 +1,50 @@
+ //Sets the template information for each meetup
+function setMeetupInfo(data){
+  var result = $('.meetup-template').clone();
+  
+  var title = result.find('.title a');
+  title.attr('href', data.link);
+  title.text(data.name);
+
+  var members = result.find('.members');
+  members.text("Members: " + data.members);
+
+  var organizer = result.find('.organizer');
+  organizer.next().text(data.organizer.name);
+
+  var about = result.find('.about');
+  about.html(data.description);
+
+  return result;
+}
+
+//Sets the location of the current meetup
+function getMeetupLoc(data){
+  return {
+    lat : data.lat,
+    lng : data.lon
+  };
+}
+
+//Sets the marker of the current meetup on the map
+function googleMarkerIt(map, location, title){
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map,
+    title: title
+  });
+  return marker;
+}
+
+function deleteMarkers(markers) {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);
+  }
+}
+
+
 $(function(){
-  var map, userLoc; 
+  var map, userLoc, markers = []; 
 
   //Displays the map based on the current user location
   function initMap(location){
@@ -37,41 +82,12 @@ $(function(){
     navigator.geolocation.getCurrentPosition(success, error);
   }
 
-  //Sets the template information for each meetup
-  function setMeetupInfo(data){
-    var result = $('.meetup-template').clone();
-    
-    var title = result.find('.title a');
-    title.attr('href', data.link);
-    title.text(data.name);
-
-    var members = result.find('.members');
-    members.text("Members: " + data.members);
-
-    var organizer = result.find('.organizer');
-    organizer.next().text(data.organizer.name);
-
-    var about = result.find('.about');
-    about.html(data.description);
-
-    return result;
-  }
-
-  function getMeetupLoc(data){
-    return {
-      lat : data.lat,
-      lng : data.lon
-    };
-  }
-
-  function googleMarkerIt(location){
-    ///Set up marker 
-  }
-
   //Uses the given category id to search for nearby meetups via ajax
   function getMeetups(id){
     var meetupLoc, meetupDesc;
     $('.meetup-results').html('');
+    deleteMarkers(markers);
+    markers = [];
 
     var opts = { 
       lon: userLoc.lng,
@@ -94,11 +110,11 @@ $(function(){
         meetupDesc = setMeetupInfo(value);
         //Set the location of the meetup
         meetupLoc = getMeetupLoc(value);
-
         //Attach results to the dom
+        console.log(meetupLoc);
         $('.meetup-results').append(meetupDesc[0]);
-        //Attach marker to the map
-        googleMarkerIt(meetupLoc);
+        //Attach marker to the map and saves it to markers array.
+        markers.push(googleMarkerIt(map, meetupLoc, value.name));
       });
     })
     .fail(function(error){
