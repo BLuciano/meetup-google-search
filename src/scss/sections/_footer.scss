@@ -1,0 +1,13 @@
+.foot{
+	padding: 3em 0;
+	background-color: darken($blue, 40);
+
+	a{	
+		padding: 0 .5em;
+		color: #fff;
+		font-size: .85em;
+	}
+	a:hover{
+		text-decoration: underline;
+	}
+}

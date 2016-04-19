@@ -85,7 +85,7 @@ a {
 
 .meetup-results {
   padding: 0 1em;
-  margin-bottom: 15em;
+  margin-bottom: 12em;
 }
 .meetup-results .meetup-template {
   width: 100%;
@@ -115,6 +115,19 @@ a {
   padding: 1em;
   overflow: scroll;
   overflow-x: hidden;
+}
+
+.foot {
+  padding: 3em 0;
+  background-color: #062964;
+}
+.foot a {
+  padding: 0 .5em;
+  color: #fff;
+  font-size: .85em;
+}
+.foot a:hover {
+  text-decoration: underline;
 }
 
 /*# sourceMappingURL=styles.css.map */
