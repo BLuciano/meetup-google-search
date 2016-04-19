@@ -1,5 +1,5 @@
 $(function(){
-  var map, userLoc;
+  var map, userLoc; 
 
   //Displays the map based on the current user location
   function initMap(location){
@@ -22,14 +22,13 @@ $(function(){
     }
 
     function success(position){
-      location = {
+      userLoc = {
         "lat" : position.coords.latitude,
         "lng" : position.coords.longitude
       };
       
       //Once location is set show map
-      map = initMap(location); 
-      return location;
+      map = initMap(userLoc); 
     }
     function error(){
       errorMsg.html("Error trying to retrive location. Check your internet connection");
@@ -38,5 +37,36 @@ $(function(){
     navigator.geolocation.getCurrentPosition(success, error);
   }
 
-  userLoc = getUserLocation(); 
+  function getMeetups(id){
+    var opts = { 
+      lon: userLoc.lng,
+      lat: userLoc.lat,
+      radius: 30,
+      category: id,
+      page: 15
+    };
+  
+    $.ajax({
+      url: "https://api.meetup.com/find/groups",
+      data: opts,
+      dataType: "jsonp",
+      type: "GET",
+    })
+    .done(function(data){
+      console.log(data);
+    })
+    .fail(function(error){
+
+    });
+  }
+
+  getUserLocation();
+
+  $('.search-form').submit(function(e){
+    e.preventDefault();
+    var catId = $('.category').val();
+    if(catId === null) {return;}
+    //search for meetups with the given category
+    getMeetups(catId);
+  });
 });
