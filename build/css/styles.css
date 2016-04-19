@@ -124,7 +124,7 @@ a {
   margin: 25px 2.5% 0;
   height: 200px;
   padding: 1em;
-  overflow: scroll;
+  overflow: auto;
   overflow-x: hidden;
 }
 @media screen and (min-width: 850px) {
