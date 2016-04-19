@@ -79,7 +79,7 @@ $(function(){
       map = initMap(userLoc); 
     }
     function error(){
-      errorMsg.html("Error trying to retrive location. Check your internet connection");
+      errorMsg.html("Error trying to retrive location. Check your internet settings or connection");
     }
 
     navigator.geolocation.getCurrentPosition(success, error);
@@ -114,7 +114,6 @@ $(function(){
         //Set the location of the meetup
         meetupLoc = getMeetupLoc(value);
         //Attach results to the dom
-        console.log(meetupLoc);
         $('.meetup-results').append(meetupDesc[0]);
         //Attach marker to the map and saves it to markers array.
         markers.push(googleMarkerIt(map, meetupLoc, value.name, index));
