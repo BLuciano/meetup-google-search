@@ -90,6 +90,9 @@ a {
     height: 500px;
   }
 }
+.map-holder .error {
+  color: #e0393d;
+}
 
 .meetup-results {
   padding: 0 1em;
