@@ -36,5 +36,11 @@
 			overflow: scroll;
 			overflow-x: hidden;
 		}
+
+		@media screen and (min-width: 850px){
+			width: 47%;
+			margin: 25px 1%;
+			display: inline-block;
+		}
 	}
 }

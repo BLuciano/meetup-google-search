@@ -4,6 +4,12 @@
 		margin: 0 2.5%;
 		padding: 1em .5em;
 		color: #333;
+
+		@media screen and (min-width: 700px){
+			width: 650px;
+			margin: 0 auto;
+			display: block;
+		}
 	}
 
 	.submitBtn{

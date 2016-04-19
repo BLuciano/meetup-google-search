@@ -6,5 +6,9 @@
 		margin: 0 5%;
 		height: 400px;
 		border: 1px solid $blue;
+
+		@media screen and (min-width: 1000px){
+			height: 500px;
+		}
 	}
 }
