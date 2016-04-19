@@ -27,10 +27,13 @@ function getMeetupLoc(data){
 }
 
 //Sets the marker of the current meetup on the map
-function googleMarkerIt(map, location, title){
+function googleMarkerIt(map, location, title, index){
+  var labels = 'ABCDEFGHIJKLMNOP';
   var marker = new google.maps.Marker({
     position: location,
     map: map,
+    label: labels[index % labels.length],
+    animation: google.maps.Animation.DROP,
     title: title
   });
   return marker;
@@ -114,7 +117,7 @@ $(function(){
         console.log(meetupLoc);
         $('.meetup-results').append(meetupDesc[0]);
         //Attach marker to the map and saves it to markers array.
-        markers.push(googleMarkerIt(map, meetupLoc, value.name));
+        markers.push(googleMarkerIt(map, meetupLoc, value.name, index));
       });
     })
     .fail(function(error){
