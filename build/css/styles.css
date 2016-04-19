@@ -53,4 +53,24 @@ a {
   background-color: #e0393d;
 }
 
+.search-form .category {
+  width: 95%;
+  margin: 0 2.5%;
+  padding: 1em .5em;
+  color: #333;
+}
+.search-form .submitBtn {
+  padding: .5em 2em;
+  margin: 2em 0;
+  background-color: #4285F4;
+  border: none;
+  color: #fff;
+  -webkit-transition: background-color 0.5s;
+  -moz-transition: background-color 0.5s;
+  transition: background-color 0.5s;
+}
+.search-form .submitBtn:hover, .search-form .submitBtn:active {
+  background-color: #e0393d;
+}
+
 /*# sourceMappingURL=styles.css.map */

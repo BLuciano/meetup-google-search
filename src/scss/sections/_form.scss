@@ -1,0 +1,20 @@
+.search-form{
+	.category{
+		width: 95%;
+		margin: 0 2.5%;
+		padding: 1em .5em;
+		color: #333;
+	}
+
+	.submitBtn{
+		padding: .5em 2em;
+		margin: 2em 0;
+		background-color: $blue;
+		border: none;
+		color: #fff;
+		@include transition(background-color 0.5s);
+	}
+	.submitBtn:hover, .submitBtn:active{
+		background-color: $red;
+	}
+}
