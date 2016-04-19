@@ -20,7 +20,6 @@ ul {
 
 .container {
   width: 100%;
-  padding: 0 2.5%;
 }
 
 .hidden {
@@ -33,6 +32,25 @@ dd {
 
 a {
   text-decoration: none;
+}
+
+.mainHdr {
+  padding-bottom: 3em;
+}
+.mainHdr .title {
+  padding-bottom: 3em;
+}
+.mainHdr .title h1, .mainHdr .title h3 {
+  margin: 0;
+  color: #fff;
+  padding: 1em;
+}
+.mainHdr .title h1 {
+  background-color: #4285F4;
+}
+.mainHdr .title h3 {
+  padding: 2em 1em;
+  background-color: #e0393d;
 }
 
 /*# sourceMappingURL=styles.css.map */

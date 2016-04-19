@@ -1,0 +1,20 @@
+.mainHdr{
+	padding-bottom: 3em;
+
+	.title{
+		padding-bottom: 3em;
+
+		h1, h3{
+			margin: 0;
+			color: #fff;
+			padding: 1em;
+		}
+		h1{
+			background-color: $blue;
+		}
+		h3{
+			padding: 2em 1em;
+			background-color: $red;
+		}
+	}
+}
