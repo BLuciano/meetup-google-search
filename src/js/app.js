@@ -1,5 +1,6 @@
  //Sets the template information for each meetup
-function setMeetupInfo(data){
+function setMeetupInfo(data, index){
+  var labels = 'ABCDEFGHIJKLMNOP';
   var result = $('.meetup-template').clone();
   
   var title = result.find('.title a');
@@ -8,6 +9,9 @@ function setMeetupInfo(data){
 
   var members = result.find('.members');
   members.text("Members: " + data.members);
+
+  var label = result.find('.label');
+  label.text(labels[index]);
 
   var organizer = result.find('.organizer');
   organizer.next().text(data.organizer.name);
@@ -32,7 +36,7 @@ function googleMarkerIt(map, location, title, index){
   var marker = new google.maps.Marker({
     position: location,
     map: map,
-    label: labels[index % labels.length],
+    label: labels[index],
     animation: google.maps.Animation.DROP,
     title: title
   });
@@ -110,7 +114,7 @@ $(function(){
     .done(function(data){
       $.each(data.data, function(index, value){
         //Set the template information
-        meetupDesc = setMeetupInfo(value);
+        meetupDesc = setMeetupInfo(value, index);
         //Set the location of the meetup
         meetupLoc = getMeetupLoc(value);
         //Attach results to the dom

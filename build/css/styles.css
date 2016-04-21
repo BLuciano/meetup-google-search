@@ -95,10 +95,12 @@ a {
 }
 
 .meetup-results {
+  position: relative;
   padding: 0 1em;
   margin-bottom: 12em;
 }
 .meetup-results .meetup-template {
+  position: relative;
   width: 100%;
   padding: 1em 0;
   color: #fff;
@@ -116,6 +118,17 @@ a {
 .meetup-results .meetup-template .title {
   width: 50%;
   float: left;
+}
+.meetup-results .meetup-template .label {
+  position: relative;
+  display: inline;
+  vertical-align: center;
+  float: right;
+  margin-right: 25%;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid #000;
 }
 .meetup-results .meetup-template .organizer {
   margin-top: 40px;
