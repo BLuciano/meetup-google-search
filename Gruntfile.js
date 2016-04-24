@@ -16,7 +16,7 @@ module.exports = function(grunt) {
       },
       build: {
         files: {
-          'build/js/app.min.js': 'src/js/*.js'
+          'build/js/app.min.js': 'build/js/app.js'
         }
       }
     },
@@ -43,6 +43,16 @@ module.exports = function(grunt) {
       }
     },
 
+    webpack: {
+      build: {
+        entry : "./src/js/app.js",
+        output : {
+          path : "build/js/",
+          filename : "app.js"
+        }
+      }
+    },
+
     watch: {
       stylesheets: {
         files: ['src/**/*.scss'],
@@ -50,7 +60,7 @@ module.exports = function(grunt) {
       },
       scripts: {
         files: 'src/js/*.js',
-        tasks: ['jshint', 'uglify']
+        tasks: ['jshint', 'webpack']
       }
     }
   });
@@ -61,9 +71,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-webpack');
   //grunt.loadNpmTasks('grunt-contrib-concat');
 
 
   //TASKS
-  grunt.registerTask('default', ['jshint', 'uglify', 'sass', 'cssmin']);
+  grunt.registerTask('default', ['jshint', 'webpack', 'sass']);
+  grunt.registerTask('minify', ['cssmin', 'uglify']);
 };
