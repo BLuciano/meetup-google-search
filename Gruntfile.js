@@ -1,4 +1,6 @@
 module.exports = function(grunt) {
+  //require('load-grunt-tasks')(grunt);
+
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -66,6 +68,22 @@ module.exports = function(grunt) {
       ]
     },
 
+    babel : {
+      options : {
+        compact : false
+      },
+      
+      build : {
+        files : [
+          {
+            expand : true,
+            src : ['build/js/app.js'],
+            ext : '.js'
+          }
+        ]
+      }
+    },
+
     watch: {
       stylesheets: {
         files: ['src/**/*.scss'],
@@ -86,8 +104,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-webpack');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-babel');
 
   //TASKS
-  grunt.registerTask('default', ['clean:dev', 'jshint', 'webpack', 'sass']);
+  grunt.registerTask('default', ['clean:dev', 'jshint', 'webpack', 'sass', 'babel:build']);
   grunt.registerTask('minify', ['clean:min', 'cssmin', 'uglify']);
 };
