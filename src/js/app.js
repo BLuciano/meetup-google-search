@@ -1,54 +1,8 @@
- //Sets the template information for each meetup
-function setMeetupInfo(data, index){
-  var labels = 'ABCDEFGHIJKLMNOP';
-  var result = $('.meetup-template').clone();
-  
-  var title = result.find('.title a');
-  title.attr('href', data.link);
-  title.text(data.name);
-
-  var members = result.find('.members');
-  members.text("Members: " + data.members);
-
-  var label = result.find('.label');
-  label.text(labels[index]);
-
-  var organizer = result.find('.organizer');
-  organizer.next().text(data.organizer.name);
-
-  var about = result.find('.about');
-  about.html(data.description);
-
-  return result;
-}
-
-//Sets the location of the current meetup
-function getMeetupLoc(data){
-  return {
-    lat : data.lat,
-    lng : data.lon
-  };
-}
-
-//Sets the marker of the current meetup on the map
-function googleMarkerIt(map, location, title, index){
-  var labels = 'ABCDEFGHIJKLMNOP';
-  var marker = new google.maps.Marker({
-    position: location,
-    map: map,
-    label: labels[index],
-    animation: google.maps.Animation.DROP,
-    title: title
-  });
-  return marker;
-}
-
-function deleteMarkers(markers) {
-  for (var i = 0; i < markers.length; i++) {
-    markers[i].setMap(null);
-  }
-}
-
+var $ = require('jquery');
+var setMeetupInfo = require('./_setMeetUp');
+var getMeetupLoc = require('./_getMeetupLoc');
+var googleMarkerIt = require('./_googleMarker');
+var deleteMarkers = require('./_deleteMArkers');
 
 $(function(){
   var map, userLoc, markers = []; 

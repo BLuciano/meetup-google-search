@@ -53,6 +53,19 @@ module.exports = function(grunt) {
       }
     },
 
+    clean: {
+      dev : [
+        './build/js/app.js',
+        './build/css/styles.css',
+        './build/css/styles.css.map'
+      ],
+
+      min : [
+        './build/js/app.min.js',
+        './build/css/styles.min.css'
+      ]
+    },
+
     watch: {
       stylesheets: {
         files: ['src/**/*.scss'],
@@ -72,10 +85,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-webpack');
-  //grunt.loadNpmTasks('grunt-contrib-concat');
-
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   //TASKS
-  grunt.registerTask('default', ['jshint', 'webpack', 'sass']);
-  grunt.registerTask('minify', ['cssmin', 'uglify']);
+  grunt.registerTask('default', ['clean:dev', 'jshint', 'webpack', 'sass']);
+  grunt.registerTask('minify', ['clean:min', 'cssmin', 'uglify']);
 };
