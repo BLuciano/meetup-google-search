@@ -65,7 +65,7 @@ $(function(){
       dataType: "jsonp",
       type: "GET",
     })
-    .done(function(data){
+    .done(data => {
       $.each(data.data, function(index, value){
         //Set the template information
         meetupDesc = setMeetupInfo(value, index);
@@ -77,7 +77,7 @@ $(function(){
         markers.push(googleMarkerIt(map, meetupLoc, value.name, index));
       });
     })
-    .fail(function(error){
+    .fail(error => {
       errorMsg.html("Error trying to retrieve Meetups information.");
     });
   }

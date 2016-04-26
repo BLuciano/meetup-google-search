@@ -1,8 +1,8 @@
 //Deletes the markers on the map if any are present
 deleteMarkers = function(markers) {
-  for (var i = 0; i < markers.length; i++) {
-    markers[i].setMap(null);
-  }
+  markers.forEach(value => {
+  	value.setMap(null);
+  });
 };
 
 module.exports = deleteMarkers;

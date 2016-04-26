@@ -7,7 +7,8 @@ module.exports = function(grunt) {
     
     jshint: {
       options: {
-        reporter: require('jshint-stylish')
+        reporter: require('jshint-stylish'),
+        esversion : 6
       },
       build: ['Gruntfile.js', 'src/js/*.js']
     },
@@ -49,7 +50,7 @@ module.exports = function(grunt) {
       build: {
         entry : "./src/js/app.js",
         output : {
-          path : "build/js/",
+          path : "./build/js/",
           filename : "app.js"
         }
       }
@@ -70,17 +71,15 @@ module.exports = function(grunt) {
 
     babel : {
       options : {
-        compact : false
+        compact : false,
+        presets : ['babel-preset-es2015']
       },
-      
-      build : {
-        files : [
-          {
-            expand : true,
-            src : ['build/js/app.js'],
-            ext : '.js'
-          }
-        ]
+      files : {
+        expand : true,
+        './build/js/app.js' : './build/js/app.js'
+        //cwd : 'build/js',
+        //src : ['app.js'],
+        //ext : 'build/js'
       }
     },
 
@@ -107,6 +106,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-babel');
 
   //TASKS
-  grunt.registerTask('default', ['clean:dev', 'jshint', 'webpack', 'sass', 'babel:build']);
+  grunt.registerTask('default', ['clean:dev', 'jshint', 'webpack', 'babel', 'sass']);
   grunt.registerTask('minify', ['clean:min', 'cssmin', 'uglify']);
 };
